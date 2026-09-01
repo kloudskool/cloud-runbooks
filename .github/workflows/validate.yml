@@ -1,0 +1,15 @@
+name: Validate runbooks
+on:
+  pull_request:
+    branches: [develop, main]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: git fetch origin "${{ github.base_ref }}"
+      - run: bash .github/scripts/validate-runbooks.sh "${{ github.base_ref }}"
