@@ -4,6 +4,10 @@
 
 Disk usage alert above 90%. Applications fail to write logs.
 
+## Severity
+
+Sev 2 if production logging stops; Sev 3 otherwise.
+
 ## Diagnosis
 
 `df -h /` confirms usage. `du -xh / --max-depth=2 | sort -h | tail` finds the largest folders.
